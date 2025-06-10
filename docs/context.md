@@ -19,5 +19,6 @@ O objetivo do projeto é desenvolver uma infraestrutura de redes robusta e escal
 | Total                     | **14** | **8**     | **8**  | **6**         |
 
 ## Esboço do projeto de Rede
+https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/Captura%20de%20tela%202025-06-10%20185648.png
 
 
