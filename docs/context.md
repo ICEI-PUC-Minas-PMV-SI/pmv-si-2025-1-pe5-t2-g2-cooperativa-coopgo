@@ -115,5 +115,79 @@ Adicionalmente, uma **DMZ (Zona Desmilitarizada)** pode ser configurada na matri
 * Possibilidade de implementação de **failover** via redundância de enlaces e roteadores.
 * Todos os dispositivos críticos devem ser monitorados via SNMP/NMS.
 
+---
+## Tabela de Endereçamento IP – COOPGO
+
+### 🏢 Matriz – Rede `192.168.0.0/24`
+
+| Dispositivo     | IP             |
+|-----------------|----------------|
+| Router Gateway  | 192.168.0.1    |
+| Servidor DNS    | 192.168.0.2    |
+| COOPGO01        | 192.168.0.11   |
+| COOPGO02        | 192.168.0.12   |
+| COOPGO03        | 192.168.0.13   |
+| COOPGO04        | 192.168.0.14   |
+| COOPGO05        | 192.168.0.15   |
+| COOPGO06        | 192.168.0.16   |
+| COOPGO07        | 192.168.0.17   |
+| COOPGO08        | 192.168.0.18   |
+| COOPGO09        | 192.168.0.19   |
+| COOPGO10        | 192.168.0.20   |
+| COOPGO11        | 192.168.0.21   |
+| COOPGO12        | 192.168.0.22   |
+| COOPGO13        | 192.168.0.23   |
+| COOPGO14        | 192.168.0.24   |
+
+---
+
+### 🏬 Filial Ituiutaba – Rede `192.168.1.0/24`
+
+| Dispositivo     | IP             |
+|-----------------|----------------|
+| Router Gateway  | 192.168.1.1    |
+| Servidor DNS    | 192.168.1.2    |
+| COOPGO15        | 192.168.1.11   |
+| COOPGO16        | 192.168.1.12   |
+| COOPGO17        | 192.168.1.13   |
+| COOPGO18        | 192.168.1.14   |
+| COOPGO19        | 192.168.1.15   |
+| COOPGO20        | 192.168.1.16   |
+| COOPGO21        | 192.168.1.17   |
+| COOPGO22        | 192.168.1.18   |
+
+---
+
+### 🏬 Filial Monte Carmelo – Rede `192.168.2.0/24`
+
+| Dispositivo     | IP             |
+|-----------------|----------------|
+| Router Gateway  | 192.168.2.1    |
+| Servidor DNS    | 192.168.2.2    |
+| COOPGO23        | 192.168.2.11   |
+| COOPGO24        | 192.168.2.12   |
+| COOPGO25        | 192.168.2.13   |
+| COOPGO26        | 192.168.2.14   |
+| COOPGO27        | 192.168.2.15   |
+| COOPGO28        | 192.168.2.16   |
+
+
+---
+
+### 🏬 Filial Frutal – Rede `192.168.3.0/24`
+
+| Dispositivo     | IP             |
+|-----------------|----------------|
+| Router Gateway  | 192.168.3.1    |
+| Servidor DNS    | 192.168.3.2    |
+| COOPGO29        | 192.168.3.11   |
+| COOPGO30        | 192.168.3.12   |
+| COOPGO31        | 192.168.3.13   |
+| COOPGO32        | 192.168.3.14   |
+| COOPGO33        | 192.168.3.15   |
+| COOPGO34        | 192.168.3.16   |
+| COOPGO35        | 192.168.3.17   |
+| COOPGO36        | 192.168.3.18   |
+
 
 
