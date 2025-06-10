@@ -9,10 +9,10 @@ Para isso, é importante um projeto de infraestrutura de redes bem elaborado par
 O objetivo do projeto é desenvolver uma infraestrutura de redes robusta e escalável que atenda às necessidades operacionais da cooperativa bancária, garantindo alta disponibilidade por meio da implementação de redundância para evitar interrupções nos serviços. Além disso, busca-se um desempenho otimizado com o uso de balanceamento de carga e otimização de tráfego para reduzir a latência. Outra meta é assegurar a escalabilidade com uma estrutura modular que permita crescimento sem impactar o desempenho, juntamente com um gerenciamento centralizado pela implementação de monitoramento e ferramentas de gestão para visibilidade e controle da rede.
 
 ## Departamentos da COOPGO
-| Setores         | Matriz |   
+| Setores         | Matriz |   | Ituiutaba |
 |  :----:   | ----------- |
-| Gerência e Administração        |[2] |
-| Crédito e Cobrança        |[4] |
-| Tecnologia da Informação e Infra        |[2] |
-| Atendimento ao Cooperado         |[4] |
-| Auditoria Interna         |[2] |
+| Gerência e Administração        |[2] | |[1] |
+| Crédito e Cobrança        |[4] | |[2] |
+| Tecnologia da Informação e Infra        |[2] | |[1] |
+| Atendimento ao Cooperado         |[4] | |[3] |
+| Auditoria Interna         |[2] | |[1] |
