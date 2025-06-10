@@ -16,6 +16,6 @@ O objetivo do projeto é desenvolver uma infraestrutura de redes robusta e escal
 | TI e Infraestrutura       | 2      | 1         | 1      | 1             | 
 | Atendimento ao coperado   | 4      | 3         | 3      | 2             | 
 | Auditoria interna         | 2      | 1         | 1      | 1             | 
-
+| Total                     | **14** | **8**     | **8**  | **6**         |
 
 
