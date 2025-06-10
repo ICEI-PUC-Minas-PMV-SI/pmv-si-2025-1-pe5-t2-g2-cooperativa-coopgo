@@ -189,5 +189,5 @@ Adicionalmente, uma **DMZ (Zona Desmilitarizada)** pode ser configurada na matri
 | COOPGO35        | 192.168.3.17   |
 | COOPGO36        | 192.168.3.18   |
 
-
-
+##  Cálculo de Links de Dados e de Internet
+![img](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/calculodelinks.png)
