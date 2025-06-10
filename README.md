@@ -27,4 +27,15 @@ Outra meta é assegurar a escalabilidade com uma estrutura modular que permita c
 
 * Alexandre Teixeira
 
+## Planejamento
+
+| Etapa         | Atividades |
+|  :----:   | ----------- |
+| ETAPA 1       |[Análise, Planejamento e Prototipação da Solução] |
+| ETAPA 2       |[Preparação de ambiente em Nuvem e Virtualização Local] |
+| ETAPA 3       |[Gerência e Monitoração de ambientes de redes] |
+| ETAPA 4       |[Mecanismos de Segurança] |
+| ETAPA 5       |[Apresentação] |
+  
+
 
