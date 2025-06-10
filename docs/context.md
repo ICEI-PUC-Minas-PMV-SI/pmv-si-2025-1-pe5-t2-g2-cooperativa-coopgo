@@ -72,7 +72,7 @@ Cada setor está representado por um bloco de máquinas identificadas como `COOP
 
 ---
 
-## 3. Conectividade Interfiliais
+##  Conectividade Interfiliais
 
 As conexões entre matriz e filiais são estabelecidas por meio de enlaces ponto-a-ponto seriais:
 
@@ -84,7 +84,7 @@ Essas conexões formam uma topologia estrela, com a matriz no centro, funcionand
 
 ---
 
-## 4. Segmentação Lógica (VLANs e DMZ)
+##  Segmentação Lógica (VLANs e DMZ)
 
 A estrutura lógica da rede prevê a criação de VLANs por setor para segmentar e isolar o tráfego, garantindo segurança, performance e facilidade de gerenciamento:
 
@@ -99,7 +99,7 @@ Adicionalmente, uma **DMZ (Zona Desmilitarizada)** pode ser configurada na matri
 
 ---
 
-## 5. Equipamentos Utilizados
+##  Equipamentos Utilizados
 
 * **Roteadores**: 1 na matriz e 1 por filial, com suporte a interfaces seriais para WAN.
 * **Switches Gerenciáveis**: Em cada unidade, com suporte a VLANs e trunking 802.1q.
@@ -108,7 +108,7 @@ Adicionalmente, uma **DMZ (Zona Desmilitarizada)** pode ser configurada na matri
 
 ---
 
-## 6. Segurança e Alta Disponibilidade
+##  Segurança e Alta Disponibilidade
 
 * A matriz atua como **ponto de autenticação centralizado**, podendo futuramente integrar serviços como RADIUS/LDAP.
 * Cada roteador filtra pacotes por ACL, controlando tráfego inter-VLAN e externo.
