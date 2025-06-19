@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CadastroUsuarios.Models.Repository
 {
@@ -54,6 +55,62 @@ namespace CadastroUsuarios.Models.Repository
             var item = usuarioLista.Where(t => t.nome == nome).FirstOrDefault();
 
             return item;
+        }
+
+        public IActionResult ValidarLogin([FromBody] LoginDTO credenciais)
+        {
+            try
+            {
+                // Lista todos os usuários
+                var listaUsuarios = Listar();
+
+                // Procura o usuário com o nome e senha fornecidos
+                var usuario = listaUsuarios.FirstOrDefault(u =>
+                    u.nome == credenciais.nome &&
+                    u.senha == credenciais.senha
+                );
+
+                if (usuario != null)
+                {
+                    // Login válido
+                    return Ok(new
+                    {
+                        sucesso = true,
+                        mensagem = "Login realizado com sucesso",
+                        usuario = new
+                        {
+                            id = usuario.id,
+                            nome = usuario.nome
+                            // Não retorna a senha por segurança
+                        }
+                    });
+                }
+                else
+                {
+                    // Credenciais inválidas
+                    return Ok(new
+                    {
+                        sucesso = false,
+                        mensagem = "Nome de usuário ou senha incorretos"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    sucesso = false,
+                    mensagem = "Erro ao processar login",
+                    erro = ex.Message
+                });
+            }
+        }
+
+        // DTO para receber as credenciais
+        public class LoginDTO
+        {
+            public string nome { get; set; }
+            public string senha { get; set; }
         }
     }
 }
