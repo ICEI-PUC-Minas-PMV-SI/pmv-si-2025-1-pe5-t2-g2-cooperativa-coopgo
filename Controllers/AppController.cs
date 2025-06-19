@@ -4,6 +4,7 @@ using CadastroUsuarios.Models.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
+using static CadastroUsuarios.Models.Repository.UsuariosRepository;
 
 namespace CadastroUsuarios.Controllers
 {
@@ -91,12 +92,51 @@ namespace CadastroUsuarios.Controllers
             {
 
             }
-
             return null;
         }
 
+        [HttpPost("VerificarLogin")]
+        public object VerificarLogin([FromBody] LoginDto credenciais)
+        {
+            try
+            {
+                UsuariosRepository usuarios = new UsuariosRepository();
+                var listaUsuarios = usuarios.Listar();
 
+                // Verifica se existe um usuário com o nome e senha fornecidos
+                var usuarioEncontrado = listaUsuarios
+                    .Where(u => u.nome == credenciais.nome && u.senha == credenciais.senha)
+                    .FirstOrDefault();
 
+                if (usuarioEncontrado != null)
+                {
+                    // Remove a senha antes de retornar
+                    return new
+                    {
+                        sucesso = true,
+                        usuario = new
+                        {
+                            id = usuarioEncontrado.id,
+                            nome = usuarioEncontrado.nome
+                        }
+                    };
+                }
+                else
+                {
+                    return new { sucesso = false };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new { sucesso = false, erro = ex.Message };
+            }
+        }
+
+        public class LoginDto
+        {
+            public string nome { get; set; }
+            public string senha { get; set; }
+        }
 
 
     }

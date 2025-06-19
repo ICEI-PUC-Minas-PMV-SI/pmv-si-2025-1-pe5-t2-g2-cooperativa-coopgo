@@ -9,7 +9,6 @@ namespace CadastroUsuarios.Models.Repository
             var listaUsuarios = Listar();
 
             var item = listaUsuarios.Where(t => t.nome == usuarios.nome).FirstOrDefault();
-
             
             if (item != null) 
             {
@@ -21,8 +20,8 @@ namespace CadastroUsuarios.Models.Repository
         }
         public List<Usuarios> Listar()
         {
-            var usuarios = File.ReadAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt");
-           
+            var usuarios = File.ReadAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt"); // verificar após criação banco
+
             List<Usuarios> usuariosLista = JsonConvert.DeserializeObject<List<Usuarios>>("["+usuarios+"]");
             
             return usuariosLista.OrderByDescending(t=>t.nome).ToList();

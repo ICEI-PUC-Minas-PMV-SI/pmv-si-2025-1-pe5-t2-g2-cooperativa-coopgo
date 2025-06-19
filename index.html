@@ -348,8 +348,8 @@
                     
                     <form id="login-form">
                         <div class="form-group">
-                            <label class="form-label">Usuário</label>
-                            <input type="text" name="usuario" id="usuario" class="form-control">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="nome" id="nome" class="form-control">
                         </div>
                         
                         <div class="form-group">
@@ -376,6 +376,83 @@
             var element = document.body;
             element.classList.toggle("dark-mode");
         }
+
+        // Adicione um event listener ao formulário
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            realizarLogin();
+        });
+
+        function realizarLogin() {
+            // Captura os valores dos inputs
+            const nome = document.getElementById('nome').value;
+            const senha = document.getElementById('senha').value;
+
+            // Validação básica
+            if (!nome || !senha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Objeto com as credenciais
+            const credenciais = {
+                nome: nome,
+                senha: senha
+            };
+
+            // Faz a requisição POST para verificar o login
+            fetch('https://localhost:44344/api/App/VerificarLogin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(credenciais)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.sucesso) {
+                        // Login bem-sucedido
+                        console.log('Login realizado com sucesso!');
+
+                        // Armazena as informações do usuário no sessionStorage
+                        sessionStorage.setItem('usuarioLogado', JSON.stringify({
+                            id: data.usuario.id,
+                            nome: data.usuario.nome
+                        }));
+
+                        alert('Login realizado com sucesso!');
+
+                        // Redireciona para a página principal ou dashboard
+                        window.location.href = 'dashboard.html'; // Ajuste para sua página principal
+                    } else {
+                        // Login falhou
+                        alert('Nome de usuário ou senha incorretos.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao realizar login:', error);
+                    alert('Erro ao realizar login. Por favor, tente novamente.');
+                });
+        }
+
+        // Função auxiliar para verificar se o usuário está logado
+        function verificarUsuarioLogado() {
+            const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+            return usuarioLogado ? JSON.parse(usuarioLogado) : null;
+        }
+
+        // Função para fazer logout
+        function realizarLogout() {
+            sessionStorage.removeItem('usuarioLogado');
+            window.location.href = 'login.html';
+        }
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
