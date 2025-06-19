@@ -1,0 +1,6 @@
+{"IdCliente":0,"Documento":"44444","Nome":"vitoria","Sexo":"FEMININO","Email":"vitoria@gmail.com","Telefone":"38999554420","Fax":"444444","UF":"SC"},
+{"IdCliente":0,"Documento":"22222","Nome":"tp","Sexo":"FEMININO","Email":"vitoria@gmail.com","Telefone":"11111111","Fax":"44444444","UF":"GO"},
+{"IdCliente":0,"Documento":"11111","Nome":"teste","Sexo":"FEMININO","Email":"teste@gmail.com","Telefone":"23268736322","Fax":"4444444444","UF":"RJ"},
+{"IdCliente":0,"Documento":"23456","Nome":"Fulano","Sexo":"MASCULINO","Email":"fulano@gmail.com","Telefone":"34222222","Fax":"44444444","UF":"AC"},
+{"IdCliente":0,"Documento":"2222222","Nome":"flavia","Sexo":"FEMININO","Email":"flavia@gmail.com","Telefone":"38999554420","Fax":"3333333","UF":"RJ"},
+{"IdCliente":0,"Documento":"3333","Nome":"vitoria","Sexo":"FEMININO","Email":"vitoria.lorrayne@sga.pucminas.br","Telefone":"38999554420","Fax":"44444444","UF":"AC"},
