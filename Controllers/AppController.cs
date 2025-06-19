@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
-using CadastroClientes.Models;
-using CadastroClientes.Models.Repository;
+using CadastroUsuarios.Models;
+using CadastroUsuarios.Models.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 
-namespace CadastroClientes.Controllers
+namespace CadastroUsuarios.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientesController : ControllerBase
+    public class AppController : ControllerBase
     {
-        [HttpPost("Salvar")]
-        public object Salvar([FromBody] Clientes cadastro)
+        [HttpPost("SalvarUsuario")]
+        public object Salvar([FromBody] Usuarios cadastro)
         {
             try
             {
-                ClientesRepository clientes = new ClientesRepository();
-                clientes.Salvar(cadastro); // 30min parte6
+                UsuariosRepository usuarios = new UsuariosRepository();
+                usuarios.Salvar(cadastro);
             }
             catch (Exception ex)
             {
@@ -28,7 +28,7 @@ namespace CadastroClientes.Controllers
         }
 
         [HttpPost("Alterar")]
-        public object Alterar([FromBody] Clientes cadastro)
+        public object Alterar([FromBody] Usuarios cadastro)
         {
             try
             {
@@ -45,10 +45,10 @@ namespace CadastroClientes.Controllers
         [HttpGet("Listar")]
         public object Listar()
         {
-            List<Clientes> listaCli = null;
+            List<Usuarios> listaCli = null;
             try
             {
-                ClientesRepository clientesRepo = new ClientesRepository();
+                UsuariosRepository clientesRepo = new UsuariosRepository();
                  listaCli = clientesRepo.Listar();
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace CadastroClientes.Controllers
         {
             try
             {
-                ClientesRepository clientes = new ClientesRepository();
+                UsuariosRepository clientes = new UsuariosRepository();
                 bool retornoDelete = clientes.Deletar(Documento);
 
                 return retornoDelete;
@@ -77,13 +77,13 @@ namespace CadastroClientes.Controllers
             return null;
         }
 
-        [HttpGet("GetCliente")]
-        public object GetCliente(string Documento)
+        [HttpGet("GetUsuario")]
+        public object GetUsuario(string nome)
         {
             try
             {
-                ClientesRepository cliente = new ClientesRepository();
-                var retorno = cliente.GetCliente(Documento);
+                UsuariosRepository usuario = new UsuariosRepository();
+                var retorno = usuario.GetUsuario(nome);
                 return retorno;
                 
             }
