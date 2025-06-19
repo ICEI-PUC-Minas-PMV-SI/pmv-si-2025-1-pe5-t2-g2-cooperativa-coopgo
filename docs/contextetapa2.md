@@ -32,12 +32,6 @@ As regras de entrada definem quais tipos de tráfego de rede podem acessar as in
 
 ---
 
-**Considerações de Segurança**
-
-- A liberação da porta **3389 (RDP)** deve ser feita com cautela, preferencialmente restringindo o acesso a IPs específicos ou utilizando uma VPN.
-- A permissão de tráfego **HTTP (porta 80)** é comum em aplicações web, mas recomenda-se o uso de HTTPS (porta 443) para maior segurança.
-- **ICMP** é útil para diagnóstico, mas pode ser explorado em alguns tipos de ataques de rede; recomenda-se permitir apenas se necessário.
-- O uso de **SNMP (portas 161–162)** deve ser monitorado e devidamente autenticado para evitar exposições.
 
 
 **Instância**
