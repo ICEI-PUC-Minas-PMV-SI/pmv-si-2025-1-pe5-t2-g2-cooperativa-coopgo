@@ -73,7 +73,7 @@
             event.preventDefault();
 
             // Verifica se o usuário está logado
-            const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
                 alert('Você precisa estar logado para alterar sua conta.');
                 window.location.href = 'login.html';
@@ -122,7 +122,7 @@
                             id: usuario.id,
                             nome: novoNome
                         };
-                        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
+                        localStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
 
                         alert('Conta alterada com sucesso!');
 

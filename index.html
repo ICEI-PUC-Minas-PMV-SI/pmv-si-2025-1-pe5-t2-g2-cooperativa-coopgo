@@ -421,7 +421,7 @@
                         console.log('Login realizado com sucesso!');
 
                         // Armazena as informações do usuário no sessionStorage
-                        sessionStorage.setItem('usuarioLogado', JSON.stringify({
+                        localStorage.setItem('usuarioLogado', JSON.stringify({
                             id: data.usuario.id,
                             nome: data.usuario.nome
                         }));
@@ -443,13 +443,13 @@
 
         // Função auxiliar para verificar se o usuário está logado
         function verificarUsuarioLogado() {
-            const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
             return usuarioLogado ? JSON.parse(usuarioLogado) : null;
         }
 
         // Função para fazer logout
         function realizarLogout() {
-            sessionStorage.removeItem('usuarioLogado');
+            localStorage.removeItem('usuarioLogado');
             window.location.href = 'login.html';
         }
 
