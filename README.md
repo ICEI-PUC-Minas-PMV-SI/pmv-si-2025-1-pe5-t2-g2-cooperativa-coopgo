@@ -34,7 +34,7 @@ Outra meta é assegurar a escalabilidade com uma estrutura modular que permita c
 | ETAPA 1       |[Análise, Planejamento e Prototipação da Solução](docs/context.md)|
 | ETAPA 2       |[Preparação de ambiente em Nuvem e Virtualização Local](docs/contextetapa2.md)|
 | ETAPA 3       |[Gerência e Monitoração de ambientes de redes](docs/contextetapa3.md) |
-| ETAPA 4       |[Mecanismos de Segurança] |
+| ETAPA 4       |[Mecanismos de Segurança](docs/contextetapa4.md)|
 | ETAPA 5       |[Apresentação] |
   
 
