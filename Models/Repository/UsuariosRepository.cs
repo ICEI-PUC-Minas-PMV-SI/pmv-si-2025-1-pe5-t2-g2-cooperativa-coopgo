@@ -56,5 +56,28 @@ namespace CadastroUsuarios.Models.Repository
 
             return item;
         }
+
+        public void Alterar(Usuarios usuario)
+        {
+            var listaUsuarios = Listar();
+
+            // Remove todos os registros (para reescrever o arquivo)
+            File.WriteAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", string.Empty);
+
+            // Atualiza o usuário na lista
+            foreach (var u in listaUsuarios)
+            {
+                if (u.id == usuario.id)
+                {
+                    // Atualiza os dados
+                    u.nome = usuario.nome;
+                    u.senha = usuario.senha;
+                }
+
+                // Reescreve no arquivo
+                var usuarioTexto = JsonConvert.SerializeObject(u) + "," + Environment.NewLine;
+                File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuarioTexto);
+            }
+        }
     }
 }

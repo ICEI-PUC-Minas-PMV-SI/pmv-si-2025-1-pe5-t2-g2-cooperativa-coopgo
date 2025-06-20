@@ -68,6 +68,79 @@
          element.classList.toggle("dark-mode");
         }
 
+        function alterarConta() {
+            // Previne o comportamento padrão
+            event.preventDefault();
+
+            // Verifica se o usuário está logado
+            const usuarioLogado = sessionStorage.getItem('usuarioLogado');
+            if (!usuarioLogado) {
+                alert('Você precisa estar logado para alterar sua conta.');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Pega o ID do usuário logado
+            const usuario = JSON.parse(usuarioLogado);
+
+            // Captura os valores dos inputs
+            const novoNome = document.getElementById('nome').value;
+            const novaSenha = document.getElementById('novaSenha').value;
+
+            // Validação básica
+            if (!novoNome || !novaSenha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Cria o objeto com os dados atualizados
+            const dadosAtualizados = {
+                id: usuario.id,
+                nome: novoNome,
+                senha: novaSenha
+            };
+
+            // Faz a requisição POST para a API
+            fetch('https://localhost:44344/api/App/Alterar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(dadosAtualizados)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.sucesso) {
+                        // Atualiza o sessionStorage com o novo nome
+                        const usuarioAtualizado = {
+                            id: usuario.id,
+                            nome: novoNome
+                        };
+                        sessionStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
+
+                        alert('Conta alterada com sucesso!');
+
+                        // Limpa os campos
+                        document.getElementById('nome').value = '';
+                        document.getElementById('novaSenha').value = '';
+
+                        // Opcional: redirecionar para o dashboard
+                        // window.location.href = 'dashboard.html';
+                    } else {
+                        alert(data.mensagem || 'Erro ao alterar conta.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao alterar conta:', error);
+                    alert('Erro ao alterar conta. Por favor, tente novamente.');
+                });
+        }
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

@@ -33,14 +33,33 @@ namespace CadastroUsuarios.Controllers
         {
             try
             {
+                UsuariosRepository usuarios = new UsuariosRepository();
 
+                // Verifica se o usuário existe
+                var listaUsuarios = usuarios.Listar();
+                var usuarioExistente = listaUsuarios.Where(u => u.id == cadastro.id).FirstOrDefault();
+
+                if (usuarioExistente == null)
+                {
+                    return new { sucesso = false, mensagem = "Usuário não encontrado." };
+                }
+
+                // Verifica se o novo nome já está em uso por outro usuário
+                var nomeEmUso = listaUsuarios.Where(u => u.nome == cadastro.nome && u.id != cadastro.id).Any();
+                if (nomeEmUso)
+                {
+                    return new { sucesso = false, mensagem = "Este nome já está em uso." };
+                }
+
+                // Realiza a alteração
+                usuarios.Alterar(cadastro);
+
+                return new { sucesso = true, mensagem = "Conta alterada com sucesso." };
             }
             catch (Exception ex)
             {
-
+                return new { sucesso = false, mensagem = "Erro ao alterar conta: " + ex.Message };
             }
-
-            return null;
         }
 
         [HttpGet("Listar")]
