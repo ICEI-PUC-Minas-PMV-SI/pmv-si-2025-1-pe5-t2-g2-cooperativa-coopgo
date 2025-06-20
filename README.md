@@ -14,6 +14,8 @@ A cooperativa bancária COOPGO, fundada na cidade de Uberaba em 2022, possui o o
 O objetivo do projeto é desenvolver uma infraestrutura de redes robusta e escalável que atenda às necessidades operacionais da cooperativa bancária, garantindo alta disponibilidade por meio da implementação de redundância para evitar interrupções nos serviços. Além disso, busca-se um desempenho otimizado com o uso de balanceamento de carga e otimização de tráfego para reduzir a latência.
 Outra meta é assegurar a escalabilidade com uma estrutura modular que permita crescimento sem impactar o desempenho, juntamente com um gerenciamento centralizado pela implementação de monitoramento e ferramentas de gestão para visibilidade e controle da rede.
 
+[Veja nossa Política de Segurança da Informação](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/COOPGO%20-%20POL%C3%8DTICA%20DE%20SEGURAN%C3%87A%20DA%20INFORMA%C3%87%C3%83O%20%20(1).pdf)
+
 ## Integrantes
 
 * Vitoria Lorrayne dos Santos Soares
