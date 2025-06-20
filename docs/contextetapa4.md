@@ -3,12 +3,19 @@
 **Política de Segurança da Informação PSI**
 
 O objetivo principal da política de segurança da informação (PSI) é garantir a proteção e segurança das informações da nossa Cooperativa, assegurando a confidencialidade, integridade e disponibilidade dos dados, além de cumprir regulamentações e normas em vigor. Para atingir esses objetivos, nossa PSI estabeleceu:
+
 ● DIRETRIZES
+
 ● PROCESSOS DE SEGURANÇA DA INFORMAÇÃO
+
 ● SEGURANÇA CORPORATIVA
+
 ● PAPÉIS E RESPONSABILIDADES
+
 ● DECLARAÇÃO DE RESPONSABILIDADE
+
 ● SANÇÕES DISCIPLINARES
+
 
 
 
