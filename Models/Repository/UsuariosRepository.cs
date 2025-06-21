@@ -28,6 +28,27 @@ namespace CadastroUsuarios.Models.Repository
             return usuariosLista.OrderByDescending(t=>t.nome).ToList();
         }
 
+        public bool Deletar(string nome)
+        {
+            var listaUsuarios = Listar();
+           var item = listaUsuarios.Where(t=>t.nome == nome).FirstOrDefault();
+
+            if (item != null) 
+            {
+                listaUsuarios.Remove(item);
+                File.WriteAllText("C:\\Users\\Usuario\\Downloads\\CadastroBaseClientes\\CadastroBaseClientes\\BancoDados\\bancodados.txt", string.Empty); // definir arquivo txt e adaptar ao banco de dados após criação
+
+
+                foreach (var usuario in listaUsuarios)
+                {
+                    Salvar(usuario);
+                }
+                return true;
+            }
+            return false;
+
+        }
+
         public void DeletarPorId(int id)
         {
             var listaUsuarios = Listar();
@@ -49,6 +70,7 @@ namespace CadastroUsuarios.Models.Repository
                 File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuarioTexto);
             }
         }
+
 
         public Usuarios GetUsuario(string nome)
         {
