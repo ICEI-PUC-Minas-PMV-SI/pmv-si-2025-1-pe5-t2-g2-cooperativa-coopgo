@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using CadastroUsuarios.Models;
 using CadastroUsuarios.Models.Repository;
+using COOPGO.Models.Repository;
+using COOPGO.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -171,6 +173,55 @@ namespace CadastroUsuarios.Controllers
             public string senha { get; set; }
         }
 
+        [HttpPost("AdicionarTransacao")]
+        public object AdicionarTransacao([FromBody] Transacao transacao)
+        {
+            try
+            {
+                TransacoesRepository transacoesRepo = new TransacoesRepository();
+
+                // Verifica se o usuário tem saldo suficiente para saque
+                if (transacao.tipo == "Saque")
+                {
+                    var extrato = transacoesRepo.ListarPorUsuario(transacao.usuarioId);
+                    decimal saldoAtual = extrato.Sum(t => t.valor);
+
+                    if (saldoAtual + transacao.valor < 0) // transacao.valor é negativo para saque
+                    {
+                        return new { sucesso = false, mensagem = "Saldo insuficiente." };
+                    }
+                }
+
+                // Gera um ID para a transação
+                var todasTransacoes = transacoesRepo.Listar();
+                transacao.id = todasTransacoes.Count > 0 ? todasTransacoes.Max(t => t.id) + 1 : 1;
+
+                transacoesRepo.Salvar(transacao);
+
+                return new { sucesso = true, mensagem = "Transação realizada com sucesso." };
+            }
+            catch (Exception ex)
+            {
+                return new { sucesso = false, mensagem = "Erro ao processar transação: " + ex.Message };
+            }
+        }
+
+        [HttpGet("ListarExtrato/{usuarioId}")]
+        public object ListarExtrato(int usuarioId)
+        {
+            try
+            {
+                TransacoesRepository transacoesRepo = new TransacoesRepository();
+                var extrato = transacoesRepo.ListarPorUsuario(usuarioId);
+
+                // Ordena por data decrescente (mais recentes primeiro)
+                return extrato.OrderByDescending(t => t.data).ToList();
+            }
+            catch (Exception ex)
+            {
+                return new List<Transacao>();
+            }
+        }
 
     }
 }
