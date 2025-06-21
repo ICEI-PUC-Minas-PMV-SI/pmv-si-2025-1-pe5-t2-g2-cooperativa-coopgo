@@ -28,25 +28,26 @@ namespace CadastroUsuarios.Models.Repository
             return usuariosLista.OrderByDescending(t=>t.nome).ToList();
         }
 
-        public bool Deletar(string nome)
+        public void DeletarPorId(int id)
         {
             var listaUsuarios = Listar();
-           var item = listaUsuarios.Where(t=>t.nome == nome).FirstOrDefault();
 
-            if (item != null) 
+            // Remove o usuário da lista
+            var usuarioRemovido = listaUsuarios.RemoveAll(u => u.id == id);
+
+            if (usuarioRemovido == 0)
             {
-                listaUsuarios.Remove(item);
-                File.WriteAllText("C:\\Users\\Usuario\\Downloads\\CadastroBaseClientes\\CadastroBaseClientes\\BancoDados\\bancodados.txt", string.Empty); // definir arquivo txt e adaptar ao banco de dados após criação
-
-
-                foreach (var usuario in listaUsuarios)
-                {
-                    Salvar(usuario);
-                }
-                return true;
+                throw new Exception("Usuário não encontrado para exclusão.");
             }
-            return false;
 
+            // Reescreve o arquivo sem o usuário excluído
+            File.WriteAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", string.Empty);
+
+            foreach (var usuario in listaUsuarios)
+            {
+                var usuarioTexto = JsonConvert.SerializeObject(usuario) + "," + Environment.NewLine;
+                File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuarioTexto);
+            }
         }
 
         public Usuarios GetUsuario(string nome)

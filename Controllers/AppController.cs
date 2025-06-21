@@ -79,22 +79,36 @@ namespace CadastroUsuarios.Controllers
             return listaCli;
         }
 
-        [HttpDelete("Deletar")]
-        public object Deletar(string Documento)
+        [HttpDelete("DeletarUsuario")]
+        public object DeletarUsuario([FromBody] DeletarUsuarioDto dados)
         {
             try
             {
-                UsuariosRepository clientes = new UsuariosRepository();
-                bool retornoDelete = clientes.Deletar(Documento);
+                UsuariosRepository usuarios = new UsuariosRepository();
 
-                return retornoDelete;
+                // Verifica se o usuário existe
+                var listaUsuarios = usuarios.Listar();
+                var usuarioExistente = listaUsuarios.Where(u => u.id == dados.id).FirstOrDefault();
+
+                if (usuarioExistente == null)
+                {
+                    return new { sucesso = false, mensagem = "Usuário não encontrado." };
+                }
+
+                // Realiza a exclusão
+                usuarios.DeletarPorId(dados.id);
+
+                return new { sucesso = true, mensagem = "Conta excluída com sucesso." };
             }
             catch (Exception ex)
             {
-
+                return new { sucesso = false, mensagem = "Erro ao excluir conta: " + ex.Message };
             }
+        }
 
-            return null;
+        public class DeletarUsuarioDto
+        {
+            public int id { get; set; }
         }
 
         [HttpGet("GetUsuario")]
