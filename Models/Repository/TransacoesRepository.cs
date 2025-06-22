@@ -1,53 +1,123 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace COOPGO.Models.Repository
 {
     public class TransacoesRepository
     {
-        private string caminhoArquivo = "C:\\Users\\Gabriel\\Downloads\\bancodados\\listaextrato.txt";
+        private readonly AppDbContext _context;
 
-        public void Salvar(Transacao transacao)
+        public TransacoesRepository(AppDbContext context)
         {
-            var transacaoTexto = JsonConvert.SerializeObject(transacao) + "," + Environment.NewLine;
-            File.AppendAllText(caminhoArquivo, transacaoTexto);
+            _context = context;
         }
 
-        public List<Transacao> Listar()
+        public async Task Salvar(Transacao transacao)
         {
-            if (!File.Exists(caminhoArquivo))
-            {
-                File.Create(caminhoArquivo).Close();
-                return new List<Transacao>();
-            }
-
-            var conteudo = File.ReadAllText(caminhoArquivo);
-
-            if (string.IsNullOrWhiteSpace(conteudo))
-            {
-                return new List<Transacao>();
-            }
-
             try
             {
-                List<Transacao> transacoes = JsonConvert.DeserializeObject<List<Transacao>>("[" + conteudo + "]");
-                return transacoes ?? new List<Transacao>();
+                // Se não tem ID, é uma nova transação
+                if (transacao.id == 0)
+                {
+                    _context.Transacoes.Add(transacao);
+                }
+                else
+                {
+                    _context.Transacoes.Update(transacao);
+                }
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao salvar transação", ex);
+            }
+        }
+
+        public async Task<List<Transacao>> Listar()
+        {
+            try
+            {
+                return await _context.Transacoes
+                    .OrderByDescending(t => t.data)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao listar transações", ex);
+            }
+        }
+
+        public async Task<List<Transacao>> ListarPorUsuario(int usuarioId)
+        {
+            try
+            {
+                return await _context.Transacoes
+                    .Where(t => t.usuarioId == usuarioId)
+                    .OrderByDescending(t => t.data)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao listar transações do usuário {usuarioId}", ex);
+            }
+        }
+
+        public async Task<decimal> ObterSaldoUsuario(int usuarioId)
+        {
+            try
+            {
+                var saldo = await _context.Transacoes
+                    .Where(t => t.usuarioId == usuarioId)
+                    .SumAsync(t => (decimal?)t.valor) ?? 0;
+
+                return saldo;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter saldo do usuário {usuarioId}", ex);
+            }
+        }
+
+        // Métodos adicionais úteis
+
+        public async Task<Transacao?> ObterPorId(int id)
+        {
+            return await _context.Transacoes.FindAsync(id);
+        }
+
+        public async Task<bool> Deletar(int id)
+        {
+            try
+            {
+                var transacao = await _context.Transacoes.FindAsync(id);
+                if (transacao == null)
+                    return false;
+
+                _context.Transacoes.Remove(transacao);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch
             {
-                return new List<Transacao>();
+                return false;
             }
         }
 
-        public List<Transacao> ListarPorUsuario(int usuarioId)
+        public async Task<List<Transacao>> ListarPorPeriodo(int usuarioId, DateTime dataInicio, DateTime dataFim)
         {
-            var todasTransacoes = Listar();
-            return todasTransacoes.Where(t => t.usuarioId == usuarioId).ToList();
+            return await _context.Transacoes
+                .Where(t => t.usuarioId == usuarioId &&
+                           t.data >= dataInicio &&
+                           t.data <= dataFim)
+                .OrderByDescending(t => t.data)
+                .ToListAsync();
         }
 
-        public decimal ObterSaldoUsuario(int usuarioId)
+        public async Task<decimal> ObterTotalPorTipo(int usuarioId, string tipo)
         {
-            var transacoesUsuario = ListarPorUsuario(usuarioId);
-            return transacoesUsuario.Sum(t => t.valor);
+            return await _context.Transacoes
+                .Where(t => t.usuarioId == usuarioId && t.tipo == tipo)
+                .SumAsync(t => (decimal?)t.valor) ?? 0;
         }
     }
 }

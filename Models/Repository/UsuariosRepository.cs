@@ -1,105 +1,149 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Microsoft.EntityFrameworkCore;
+using CadastroUsuarios.Models;
+using COOPGO.Models;
 
 namespace CadastroUsuarios.Models.Repository
 {
     public class UsuariosRepository
     {
-        public void Salvar(Usuarios usuarios)
+        private readonly AppDbContext _context;
+
+        public UsuariosRepository(AppDbContext context)
         {
-            var listaUsuarios = Listar();
-
-            var item = listaUsuarios.Where(t => t.nome == usuarios.nome).FirstOrDefault();
-            
-            if (item != null) 
-            {
-                Deletar(usuarios.nome);
-            }
-
-            var usuariosTexto = JsonConvert.SerializeObject(usuarios) + "," + Environment.NewLine; // verificar após criação banco
-            File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuariosTexto); // verificar após criação banco
-        }
-        public List<Usuarios> Listar()
-        {
-            var usuarios = File.ReadAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt"); // verificar após criação banco
-
-            List<Usuarios> usuariosLista = JsonConvert.DeserializeObject<List<Usuarios>>("["+usuarios+"]");
-            
-            return usuariosLista.OrderByDescending(t=>t.nome).ToList();
+            _context = context;
         }
 
-        public bool Deletar(string nome)
+        public async Task Salvar(Usuarios usuario)
         {
-            var listaUsuarios = Listar();
-           var item = listaUsuarios.Where(t=>t.nome == nome).FirstOrDefault();
-
-            if (item != null) 
+            try
             {
-                listaUsuarios.Remove(item);
-                File.WriteAllText("C:\\Users\\Usuario\\Downloads\\CadastroBaseClientes\\CadastroBaseClientes\\BancoDados\\bancodados.txt", string.Empty); // definir arquivo txt e adaptar ao banco de dados após criação
-
-
-                foreach (var usuario in listaUsuarios)
+                // Para novo usuário, garante que o ID seja 0
+                if (usuario.id == 0)
                 {
-                    Salvar(usuario);
+                    // Verifica se já existe um usuário com o mesmo nome
+                    var usuarioExistente = await _context.Usuarios
+                        .FirstOrDefaultAsync(u => u.nome == usuario.nome);
+
+                    if (usuarioExistente != null)
+                    {
+                        throw new Exception("Já existe um usuário com este nome.");
+                    }
+
+                    // Novo usuário
+                    _context.Usuarios.Add(usuario);
+                    await _context.SaveChangesAsync();
+
+                    // O ID foi gerado automaticamente pelo banco
+                    // e já está disponível no objeto usuario
                 }
-                return true;
-            }
-            return false;
-
-        }
-
-        public void DeletarPorId(int id)
-        {
-            var listaUsuarios = Listar();
-
-            // Remove o usuário da lista
-            var usuarioRemovido = listaUsuarios.RemoveAll(u => u.id == id);
-
-            if (usuarioRemovido == 0)
-            {
-                throw new Exception("Usuário não encontrado para exclusão.");
-            }
-
-            // Reescreve o arquivo sem o usuário excluído
-            File.WriteAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", string.Empty);
-
-            foreach (var usuario in listaUsuarios)
-            {
-                var usuarioTexto = JsonConvert.SerializeObject(usuario) + "," + Environment.NewLine;
-                File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuarioTexto);
-            }
-        }
-
-
-        public Usuarios GetUsuario(string nome)
-        {
-            var usuarioLista = Listar();
-            var item = usuarioLista.Where(t => t.nome == nome).FirstOrDefault();
-
-            return item;
-        }
-
-        public void Alterar(Usuarios usuario)
-        {
-            var listaUsuarios = Listar();
-
-            // Remove todos os registros (para reescrever o arquivo)
-            File.WriteAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", string.Empty);
-
-            // Atualiza o usuário na lista
-            foreach (var u in listaUsuarios)
-            {
-                if (u.id == usuario.id)
+                else
                 {
-                    // Atualiza os dados
-                    u.nome = usuario.nome;
-                    u.senha = usuario.senha;
+                    // Atualização - verifica nome duplicado excluindo o próprio usuário
+                    var usuarioExistente = await _context.Usuarios
+                        .FirstOrDefaultAsync(u => u.nome == usuario.nome && u.id != usuario.id);
+
+                    if (usuarioExistente != null)
+                    {
+                        throw new Exception("Já existe um usuário com este nome.");
+                    }
+
+                    _context.Usuarios.Update(usuario);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao salvar usuário", ex);
+            }
+        }
+        public async Task<List<Usuarios>> Listar()
+        {
+            try
+            {
+                return await _context.Usuarios
+                    .OrderByDescending(u => u.nome)
+                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao listar usuários", ex);
+            }
+        }
+
+        public async Task<bool> Deletar(string nome)
+        {
+            try
+            {
+                var usuario = await _context.Usuarios
+                    .FirstOrDefaultAsync(u => u.nome == nome);
+
+                if (usuario != null)
+                {
+                    _context.Usuarios.Remove(usuario);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao deletar usuário {nome}", ex);
+            }
+        }
+
+        public async Task DeletarPorId(int id)
+        {
+            try
+            {
+                var usuario = await _context.Usuarios.FindAsync(id);
+
+                if (usuario == null)
+                {
+                    throw new Exception("Usuário não encontrado para exclusão.");
                 }
 
-                // Reescreve no arquivo
-                var usuarioTexto = JsonConvert.SerializeObject(u) + "," + Environment.NewLine;
-                File.AppendAllText("C:\\Users\\Gabriel\\Downloads\\bancodados\\bancodados.txt", usuarioTexto);
+                _context.Usuarios.Remove(usuario);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao deletar usuário com ID {id}", ex);
+            }
+        }
+
+        public async Task<Usuarios> GetUsuario(string nome)
+        {
+            try
+            {
+                return await _context.Usuarios
+                    .FirstOrDefaultAsync(u => u.nome == nome);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao buscar usuário {nome}", ex);
+            }
+        }
+
+        public async Task Alterar(Usuarios usuario)
+        {
+            try
+            {
+                var usuarioExistente = await _context.Usuarios.FindAsync(usuario.id);
+
+                if (usuarioExistente == null)
+                {
+                    throw new Exception("Usuário não encontrado.");
+                }
+
+                // Atualiza os campos
+                usuarioExistente.nome = usuario.nome;
+                usuarioExistente.senha = usuario.senha;
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao alterar usuário", ex);
             }
         }
     }

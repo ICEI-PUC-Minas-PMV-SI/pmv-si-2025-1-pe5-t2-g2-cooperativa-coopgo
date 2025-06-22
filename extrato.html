@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -32,11 +32,11 @@
             border-bottom: 1px solid #333;
         }
 
-        .navbar .container-fluid {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+            .navbar .container-fluid {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
         .logo {
             font-family: 'Monoton', cursive;
@@ -54,15 +54,15 @@
             color: white;
         }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
 
-        .nav-links a:hover {
-            color: #9acd32;
-        }
+                .nav-links a:hover {
+                    color: #9acd32;
+                }
 
         .user-section {
             display: flex;
@@ -71,9 +71,9 @@
             color: white;
         }
 
-        .user-section span {
-            color: #9acd32;
-        }
+            .user-section span {
+                color: #9acd32;
+            }
 
         .cotacao-dolar {
             color: white;
@@ -90,9 +90,9 @@
             font-size: 14px;
         }
 
-        .logout-btn:hover {
-            background-color: #c82333;
-        }
+            .logout-btn:hover {
+                background-color: #c82333;
+            }
 
         /* Main content */
         .main-container {
@@ -159,9 +159,9 @@
             background-color: #28a745;
         }
 
-        .saque-btn:hover, .deposito-btn:hover {
-            opacity: 0.9;
-        }
+            .saque-btn:hover, .deposito-btn:hover {
+                opacity: 0.9;
+            }
 
         /* Extract section */
         .extract-section {
@@ -187,23 +187,23 @@
             margin-top: 20px;
         }
 
-        .extract-table th {
-            background-color: #f8f9fa;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #ddd;
-        }
+            .extract-table th {
+                background-color: #f8f9fa;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                border: 1px solid #ddd;
+            }
 
-        .extract-table td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
+            .extract-table td {
+                padding: 15px;
+                text-align: center;
+                border: 1px solid #ddd;
+            }
 
-        .extract-table tbody tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
+            .extract-table tbody tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
 
         .valor-positivo {
             color: #000;
@@ -222,21 +222,21 @@
             color: white;
         }
 
-        footer a {
-            color: #9acd32;
-            text-decoration: none;
-            margin: 0 15px;
-        }
+            footer a {
+                color: #9acd32;
+                text-decoration: none;
+                margin: 0 15px;
+            }
 
-        footer a:hover {
-            color: white;
-        }
+                footer a:hover {
+                    color: white;
+                }
 
-        footer p {
-            color: #ccc;
-            margin: 10px 0 0 0;
-            font-size: 14px;
-        }
+            footer p {
+                color: #ccc;
+                margin: 10px 0 0 0;
+                font-size: 14px;
+            }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -244,23 +244,23 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
+
             .nav-links {
                 display: none;
             }
-            
+
             .main-container {
                 padding: 15px;
             }
-            
+
             .extract-table {
                 font-size: 14px;
             }
-            
-            .extract-table th,
-            .extract-table td {
-                padding: 10px 5px;
-            }
+
+                .extract-table th,
+                .extract-table td {
+                    padding: 10px 5px;
+                }
         }
     </style>
 </head>
@@ -269,12 +269,12 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <img class="logo" src="img/coopgologowide.jpg" href="#"></img>
-                
+
                 <div class="nav-links">
                     <a href="#">Extrato</a>
-                    <a href="#">Usuário <span>✏️</span></a>
+                    <a href="cadastrodeusuario.html">Usuário<span></span></a>
                 </div>
-                
+
                 <div class="user-section">
                     <div class="cotacao-dolar">
                         Cotação Dólar: R$<span id="cotacao-dolar">5,40</span>
@@ -288,7 +288,7 @@
     <div class="main-container">
         <div class="account-section">
             <div class="account-title">Sua Conta</div>
-            
+
             <div class="balance-section">
                 <div class="balance-label">Saldo em conta:</div>
                 <div class="balance-item">
@@ -302,7 +302,7 @@
 
         <div class="extract-section">
             <div class="extract-title">Extrato</div>
-            
+
             <table class="extract-table">
                 <thead>
                     <tr>
@@ -365,11 +365,11 @@
                         `-R$${Math.abs(item.valor).toFixed(2).replace('.', ',')}`;
 
                     row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
-                <td>${item.tipo}</td>
-                <td class="${valorClass}">${valorFormatado}</td>
-            `;
+                    <td>${index + 1}</td>
+                    <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
+                    <td>${item.tipo}</td>
+                    <td class="${valorClass}">${valorFormatado}</td>
+                `;
                     tbody.appendChild(row);
                 });
 
