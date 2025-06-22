@@ -34,10 +34,11 @@ if (app.Environment.IsDevelopment())
 }
 
 //app cors
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("corsapp");
 app.UseAuthorization();
+app.UseStaticFiles();
 
 //app.UseCors(prodCorsPolicy);
 

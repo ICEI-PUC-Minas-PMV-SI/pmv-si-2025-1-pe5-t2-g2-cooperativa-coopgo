@@ -18,4 +18,59 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\cadastrodeusuario.html" />
+    <None Include="wwwroot\css\editar_conta.css" />
+    <None Include="wwwroot\css\Style.css" />
+    <None Include="wwwroot\css\telacadastro.css" />
+    <None Include="wwwroot\css\teladelogin.css" />
+    <None Include="wwwroot\editar_conta.html" />
+    <None Include="wwwroot\extrato.html" />
+    <None Include="wwwroot\imgs\cadastro-de-usuario.svg" />
+    <None Include="wwwroot\imgs\cadastro-do-usuario.png" />
+    <None Include="wwwroot\imgs\cadastro-do-usuario2.png" />
+    <None Include="wwwroot\imgs\calculadora.png" />
+    <None Include="wwwroot\imgs\dicas-de-investimento.jpg" />
+    <None Include="wwwroot\imgs\dicas-planejamento-financeiro.png" />
+    <None Include="wwwroot\imgs\ganho.svg" />
+    <None Include="wwwroot\imgs\Icons\account-circle-outline.png" />
+    <None Include="wwwroot\imgs\Icons\account-group.png" />
+    <None Include="wwwroot\imgs\Icons\basket-plus-outline.png" />
+    <None Include="wwwroot\imgs\Icons\basket-plus.png" />
+    <None Include="wwwroot\imgs\Icons\cart-outline.png" />
+    <None Include="wwwroot\imgs\Icons\circle-slice-4.png" />
+    <None Include="wwwroot\imgs\Icons\delete-outline.png" />
+    <None Include="wwwroot\imgs\Icons\delete.png" />
+    <None Include="wwwroot\imgs\Icons\plus-box-outline.png" />
+    <None Include="wwwroot\imgs\Icons\plus-box.png" />
+    <None Include="wwwroot\imgs\Icons\plus-circle.png" />
+    <None Include="wwwroot\imgs\Icons\plus.png" />
+    <None Include="wwwroot\imgs\Icons\trash-can.png" />
+    <None Include="wwwroot\imgs\Icons\view-headline.png" />
+    <None Include="wwwroot\imgs\imagemlistareceita.svg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\fundo-puc.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\Gabriel-perfil-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\Helberth-perfil-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\Keren-perfil-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\natanael-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\nathan-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\Vitor-perfil-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\Imagens-QUEM SOMOS\Vitoria-perfil-quem-somos.jpg" />
+    <None Include="wwwroot\imgs\lista-de-gastos.svg.svg" />
+    <None Include="wwwroot\imgs\lista-expandida.png" />
+    <None Include="wwwroot\imgs\lista-expandida.svg" />
+    <None Include="wwwroot\imgs\listas-de-gastos.png" />
+    <None Include="wwwroot\imgs\logo 2.svg" />
+    <None Include="wwwroot\imgs\logo.jpg" />
+    <None Include="wwwroot\imgs\logo.svg" />
+    <None Include="wwwroot\imgs\reducao.svg" />
+    <None Include="wwwroot\imgs\restauracao-financeira.png" />
+    <None Include="wwwroot\imgs\tela-inicial-do-usuario.svg" />
+    <None Include="wwwroot\imgs\tela-inicial-do-usuario.svg.png" />
+    <None Include="wwwroot\imgs\tela-inicial.png" />
+    <None Include="wwwroot\img\coopgologo.jpg" />
+    <None Include="wwwroot\img\coopgologowide.jpg" />
+    <None Include="wwwroot\index.html" />
+  </ItemGroup>
+
 </Project>

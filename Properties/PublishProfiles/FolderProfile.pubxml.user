@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0</_PublishTargetUrl>
+    <History>True|2025-06-22T19:16:25.7884896Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="index.html">
+      <publishTime>06/22/2025 14:40:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
