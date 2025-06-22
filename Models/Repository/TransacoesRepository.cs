@@ -15,7 +15,6 @@ namespace COOPGO.Models.Repository
         {
             try
             {
-                // Se não tem ID, é uma nova transação
                 if (transacao.id == 0)
                 {
                     _context.Transacoes.Add(transacao);
@@ -78,7 +77,6 @@ namespace COOPGO.Models.Repository
             }
         }
 
-        // Métodos adicionais úteis
 
         public async Task<Transacao?> ObterPorId(int id)
         {

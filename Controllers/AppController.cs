@@ -29,8 +29,7 @@ namespace CadastroUsuarios.Controllers
             {
                 var usuarios = new UsuariosRepository(_context);
 
-                // NÃO define o ID - deixa o banco gerar automaticamente
-                cadastro.id = 0; // Garante que seja 0 para novo usuário
+                cadastro.id = 0;
 
                 await usuarios.Salvar(cadastro);
 
@@ -38,7 +37,7 @@ namespace CadastroUsuarios.Controllers
                 {
                     sucesso = true,
                     mensagem = "Usuário salvo com sucesso.",
-                    usuario = new { id = cadastro.id, nome = cadastro.nome } // Retorna o ID gerado
+                    usuario = new { id = cadastro.id, nome = cadastro.nome } 
                 };
             }
             catch (Exception ex)
@@ -54,7 +53,6 @@ namespace CadastroUsuarios.Controllers
             {
                 var usuarios = new UsuariosRepository(_context);
 
-                // Verifica se o usuário existe
                 var usuarioExistente = await _context.Usuarios.FindAsync(cadastro.id);
 
                 if (usuarioExistente == null)
@@ -62,7 +60,6 @@ namespace CadastroUsuarios.Controllers
                     return new { sucesso = false, mensagem = "Usuário não encontrado." };
                 }
 
-                // Verifica se o novo nome já está em uso por outro usuário
                 var nomeEmUso = await _context.Usuarios
                     .AnyAsync(u => u.nome == cadastro.nome && u.id != cadastro.id);
 
@@ -71,7 +68,6 @@ namespace CadastroUsuarios.Controllers
                     return new { sucesso = false, mensagem = "Este nome já está em uso." };
                 }
 
-                // Realiza a alteração
                 await usuarios.Alterar(cadastro);
 
                 return new { sucesso = true, mensagem = "Conta alterada com sucesso." };
@@ -106,7 +102,6 @@ namespace CadastroUsuarios.Controllers
             {
                 var usuarios = new UsuariosRepository(_context);
 
-                // Verifica se o usuário existe
                 var usuarioExistente = await _context.Usuarios.FindAsync(dados.id);
 
                 if (usuarioExistente == null)
@@ -114,14 +109,12 @@ namespace CadastroUsuarios.Controllers
                     return new { sucesso = false, mensagem = "Usuário não encontrado." };
                 }
 
-                // Remove primeiro as transações do usuário (se não estiver configurado cascade delete)
                 var transacoes = await _context.Transacoes
                     .Where(t => t.usuarioId == dados.id)
                     .ToListAsync();
 
                 _context.Transacoes.RemoveRange(transacoes);
 
-                // Realiza a exclusão do usuário
                 await usuarios.DeletarPorId(dados.id);
 
                 await transaction.CommitAsync();
@@ -148,7 +141,6 @@ namespace CadastroUsuarios.Controllers
                     return new { sucesso = false, mensagem = "Usuário não encontrado." };
                 }
 
-                // Remove a senha antes de retornar
                 return new
                 {
                     id = retorno.id,
@@ -210,7 +202,6 @@ namespace CadastroUsuarios.Controllers
             {
                 var transacoesRepo = new TransacoesRepository(_context);
 
-                // Verifica se o usuário tem saldo suficiente para saque
                 if (transacao.tipo == "Saque")
                 {
                     var saldoAtual = await transacoesRepo.ObterSaldoUsuario(transacao.usuarioId);
@@ -221,7 +212,6 @@ namespace CadastroUsuarios.Controllers
                     }
                 }
 
-                // Define a data atual se não foi informada
                 if (transacao.data == default(DateTime))
                 {
                     transacao.data = DateTime.Now;

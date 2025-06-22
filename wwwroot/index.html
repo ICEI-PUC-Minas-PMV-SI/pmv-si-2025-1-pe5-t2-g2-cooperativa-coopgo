@@ -377,25 +377,21 @@
             element.classList.toggle("dark-mode");
         }
 
-        // Adicione um event listener ao formulário
         document.getElementById('login-form').addEventListener('submit', function (event) {
             event.preventDefault();
             realizarLogin();
         });
 
         function realizarLogin() {
-            // Captura os valores dos inputs
             const nome = document.getElementById('nome').value.trim();
             const senha = document.getElementById('senha').value;
             const lembrarMe = document.getElementById('lembrar-me')?.checked || false;
 
-            // Validação básica
             if (!nome || !senha) {
                 mostrarErro('Por favor, preencha todos os campos.');
                 return;
             }
 
-            // Validações adicionais
             if (nome.length < 3) {
                 mostrarErro('O nome deve ter pelo menos 3 caracteres.');
                 return;
@@ -406,7 +402,6 @@
                 return;
             }
 
-            // Desabilita o formulário durante o login
             const botaoLogin = document.querySelector('button[type="submit"]');
             const inputs = document.querySelectorAll('#login-form input');
 
@@ -414,13 +409,11 @@
             botaoLogin.innerHTML = '<span class="spinner"></span> Entrando...';
             inputs.forEach(input => input.disabled = true);
 
-            // Objeto com as credenciais
             const credenciais = {
                 nome: nome,
                 senha: senha
             };
 
-            // Faz a requisição POST para verificar o login
             fetch('https://localhost:44344/api/App/VerificarLogin', {
                 method: 'POST',
                 headers: {
@@ -439,34 +432,26 @@
                 })
                 .then(data => {
                     if (data.sucesso) {
-                        // Login bem-sucedido
+
                         console.log('Login realizado com sucesso!');
 
-                        // Dados do usuário para armazenar
                         const dadosUsuario = {
                             id: data.usuario.id,
                             nome: data.usuario.nome,
                             loginTime: new Date().toISOString()
                         };
 
-                        // Armazena conforme a opção "lembrar-me"
                         if (lembrarMe) {
-                            // Armazena no localStorage (persiste após fechar o navegador)
                             localStorage.setItem('usuarioLogado', JSON.stringify(dadosUsuario));
-                            // Define um cookie de "lembrar-me" válido por 30 dias
                             setCookie('lembrarUsuario', nome, 30);
                         } else {
-                            // Armazena no sessionStorage (remove ao fechar o navegador)
                             sessionStorage.setItem('usuarioLogado', JSON.stringify(dadosUsuario));
                             localStorage.setItem('usuarioLogado', JSON.stringify(dadosUsuario)); // Mantém para compatibilidade
                         }
 
-                        // Mostra mensagem de sucesso
                         mostrarSucesso('Login realizado com sucesso! Redirecionando...');
 
-                        // Redireciona após um breve delay
                         setTimeout(() => {
-                            // Verifica se havia uma página de destino pendente
                             const paginaDestino = sessionStorage.getItem('paginaAposLogin') || 'extrato.html';
                             sessionStorage.removeItem('paginaAposLogin');
                             window.location.href = paginaDestino;
@@ -479,10 +464,8 @@
                 .catch(error => {
                     console.error('Erro ao realizar login:', error);
 
-                    // Mensagens de erro específicas
                     if (error.message.includes('incorretos')) {
                         mostrarErro('Nome de usuário ou senha incorretos.');
-                        // Limpa apenas a senha
                         document.getElementById('senha').value = '';
                         document.getElementById('senha').focus();
                     } else {
@@ -490,7 +473,6 @@
                     }
                 })
                 .finally(() => {
-                    // Reabilita o formulário
                     botaoLogin.disabled = false;
                     botaoLogin.textContent = 'Entrar';
                     inputs.forEach(input => input.disabled = false);
@@ -525,7 +507,6 @@
             const form = document.getElementById('login-form');
             form.insertBefore(alerta, form.firstChild);
 
-            // Remove automaticamente após 5 segundos
             setTimeout(() => {
                 if (alerta.parentElement) {
                     alerta.remove();
@@ -533,7 +514,6 @@
             }, 5000);
         }
 
-        // Função para mostrar mensagens de sucesso
         function mostrarSucesso(mensagem) {
             const alerta = document.createElement('div');
             alerta.className = 'alerta-sucesso';
@@ -551,9 +531,7 @@
             form.insertBefore(alerta, form.firstChild);
         }
 
-        // Função auxiliar para verificar se o usuário está logado
         function verificarUsuarioLogado() {
-            // Verifica primeiro no sessionStorage, depois no localStorage
             let usuarioLogado = sessionStorage.getItem('usuarioLogado') || localStorage.getItem('usuarioLogado');
 
             if (!usuarioLogado) {
@@ -563,7 +541,6 @@
             try {
                 const usuario = JSON.parse(usuarioLogado);
 
-                // Verifica se o login não expirou (24 horas)
                 if (usuario.loginTime) {
                     const loginTime = new Date(usuario.loginTime);
                     const agora = new Date();
@@ -582,23 +559,17 @@
             }
         }
 
-        // Função para fazer logout
         function realizarLogout() {
-            // Remove de todos os storages
             localStorage.removeItem('usuarioLogado');
             sessionStorage.removeItem('usuarioLogado');
 
-            // Remove cookie de lembrar-me
             deleteCookie('lembrarUsuario');
 
-            // Limpa qualquer outro dado relacionado
             sessionStorage.clear();
 
-            // Redireciona para login
             window.location.href = 'index.html';
         }
 
-        // Funções auxiliares para cookies
         function setCookie(nome, valor, dias) {
             const data = new Date();
             data.setTime(data.getTime() + (dias * 24 * 60 * 60 * 1000));
@@ -621,17 +592,13 @@
             document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         }
 
-        // Ao carregar a página, verifica se deve preencher o campo de usuário
         document.addEventListener('DOMContentLoaded', function () {
-            // Verifica se já está logado
             const usuarioLogado = verificarUsuarioLogado();
             if (usuarioLogado) {
-                // Se já está logado, redireciona
                 window.location.href = 'extrato.html';
                 return;
             }
 
-            // Verifica cookie de lembrar-me
             const usuarioLembrado = getCookie('lembrarUsuario');
             if (usuarioLembrado) {
                 document.getElementById('nome').value = usuarioLembrado;
@@ -639,14 +606,11 @@
                 if (checkboxLembrar) {
                     checkboxLembrar.checked = true;
                 }
-                // Foca no campo de senha
                 document.getElementById('senha').focus();
             } else {
-                // Foca no campo de nome
                 document.getElementById('nome').focus();
             }
 
-            // Adiciona indicador de caps lock
             const senhaInput = document.getElementById('senha');
             if (senhaInput) {
                 senhaInput.addEventListener('keyup', function (event) {

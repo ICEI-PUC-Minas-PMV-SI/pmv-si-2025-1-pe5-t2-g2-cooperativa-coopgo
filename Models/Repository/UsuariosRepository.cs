@@ -17,10 +17,8 @@ namespace CadastroUsuarios.Models.Repository
         {
             try
             {
-                // Para novo usuário, garante que o ID seja 0
                 if (usuario.id == 0)
                 {
-                    // Verifica se já existe um usuário com o mesmo nome
                     var usuarioExistente = await _context.Usuarios
                         .FirstOrDefaultAsync(u => u.nome == usuario.nome);
 
@@ -29,16 +27,12 @@ namespace CadastroUsuarios.Models.Repository
                         throw new Exception("Já existe um usuário com este nome.");
                     }
 
-                    // Novo usuário
                     _context.Usuarios.Add(usuario);
                     await _context.SaveChangesAsync();
 
-                    // O ID foi gerado automaticamente pelo banco
-                    // e já está disponível no objeto usuario
                 }
                 else
                 {
-                    // Atualização - verifica nome duplicado excluindo o próprio usuário
                     var usuarioExistente = await _context.Usuarios
                         .FirstOrDefaultAsync(u => u.nome == usuario.nome && u.id != usuario.id);
 
@@ -135,7 +129,6 @@ namespace CadastroUsuarios.Models.Repository
                     throw new Exception("Usuário não encontrado.");
                 }
 
-                // Atualiza os campos
                 usuarioExistente.nome = usuario.nome;
                 usuarioExistente.senha = usuario.senha;
 

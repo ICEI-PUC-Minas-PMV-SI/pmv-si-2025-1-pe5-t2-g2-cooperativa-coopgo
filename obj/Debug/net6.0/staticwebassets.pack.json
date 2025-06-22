@@ -1,0 +1,229 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\cadastrodeusuario.html",
+      "PackagePath": "staticwebassets\\cadastrodeusuario.html"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\css\\Style.css",
+      "PackagePath": "staticwebassets\\css\\Style.css"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\css\\editar_conta.css",
+      "PackagePath": "staticwebassets\\css\\editar_conta.css"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\css\\telacadastro.css",
+      "PackagePath": "staticwebassets\\css\\telacadastro.css"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\css\\teladelogin.css",
+      "PackagePath": "staticwebassets\\css\\teladelogin.css"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\editar_conta.html",
+      "PackagePath": "staticwebassets\\editar_conta.html"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\extrato.html",
+      "PackagePath": "staticwebassets\\extrato.html"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\img\\coopgologo.jpg",
+      "PackagePath": "staticwebassets\\img\\coopgologo.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\img\\coopgologowide.jpg",
+      "PackagePath": "staticwebassets\\img\\coopgologowide.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\account-circle-outline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\account-circle-outline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\account-group.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\account-group.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\basket-plus-outline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\basket-plus-outline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\basket-plus.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\basket-plus.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\cart-outline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\cart-outline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\circle-slice-4.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\circle-slice-4.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\delete-outline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\delete-outline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\delete.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\delete.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\plus-box-outline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\plus-box-outline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\plus-box.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\plus-box.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\plus-circle.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\plus-circle.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\plus.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\plus.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\trash-can.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\trash-can.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Icons\\view-headline.png",
+      "PackagePath": "staticwebassets\\imgs\\Icons\\view-headline.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\Gabriel-perfil-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\Gabriel-perfil-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\Helberth-perfil-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\Helberth-perfil-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\Keren-perfil-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\Keren-perfil-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\Vitor-perfil-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\Vitor-perfil-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\Vitoria-perfil-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\Vitoria-perfil-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\fundo-puc.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\fundo-puc.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\natanael-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\natanael-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\Imagens-QUEM SOMOS\\nathan-quem-somos.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Imagens-QUEM SOMOS\\nathan-quem-somos.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\cadastro-de-usuario.svg",
+      "PackagePath": "staticwebassets\\imgs\\cadastro-de-usuario.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\cadastro-do-usuario.png",
+      "PackagePath": "staticwebassets\\imgs\\cadastro-do-usuario.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\cadastro-do-usuario2.png",
+      "PackagePath": "staticwebassets\\imgs\\cadastro-do-usuario2.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\calculadora.png",
+      "PackagePath": "staticwebassets\\imgs\\calculadora.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\dicas-de-investimento.jpg",
+      "PackagePath": "staticwebassets\\imgs\\dicas-de-investimento.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\dicas-planejamento-financeiro.png",
+      "PackagePath": "staticwebassets\\imgs\\dicas-planejamento-financeiro.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\ganho.svg",
+      "PackagePath": "staticwebassets\\imgs\\ganho.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\imagemlistareceita.svg",
+      "PackagePath": "staticwebassets\\imgs\\imagemlistareceita.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\lista-de-gastos.svg.svg",
+      "PackagePath": "staticwebassets\\imgs\\lista-de-gastos.svg.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\lista-expandida.png",
+      "PackagePath": "staticwebassets\\imgs\\lista-expandida.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\lista-expandida.svg",
+      "PackagePath": "staticwebassets\\imgs\\lista-expandida.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\listas-de-gastos.png",
+      "PackagePath": "staticwebassets\\imgs\\listas-de-gastos.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\logo 2.svg",
+      "PackagePath": "staticwebassets\\imgs\\logo 2.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\logo.jpg",
+      "PackagePath": "staticwebassets\\imgs\\logo.jpg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\logo.svg",
+      "PackagePath": "staticwebassets\\imgs\\logo.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\reducao.svg",
+      "PackagePath": "staticwebassets\\imgs\\reducao.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\restauracao-financeira.png",
+      "PackagePath": "staticwebassets\\imgs\\restauracao-financeira.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\tela-inicial-do-usuario.svg",
+      "PackagePath": "staticwebassets\\imgs\\tela-inicial-do-usuario.svg"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\tela-inicial-do-usuario.svg.png",
+      "PackagePath": "staticwebassets\\imgs\\tela-inicial-do-usuario.svg.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\imgs\\tela-inicial.png",
+      "PackagePath": "staticwebassets\\imgs\\tela-inicial.png"
+    },
+    {
+      "Id": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.COOPGO.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.COOPGO.props",
+      "PackagePath": "build\\COOPGO.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.COOPGO.props",
+      "PackagePath": "buildMultiTargeting\\COOPGO.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.COOPGO.props",
+      "PackagePath": "buildTransitive\\COOPGO.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

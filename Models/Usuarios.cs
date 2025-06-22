@@ -18,7 +18,6 @@ namespace CadastroUsuarios.Models
         [StringLength(255, MinimumLength = 4, ErrorMessage = "A senha deve ter no mínimo 4 caracteres")]
         public string senha { get; set; }
 
-        // Navigation property para as transações
         public virtual ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
     }
 }

@@ -28,7 +28,6 @@
         flex-direction: column;
     }
 
-    /* Header */
     .navbar {
         background-color: #1a1a1a !important;
         padding: 15px 0;
@@ -241,7 +240,6 @@
             font-size: 14px;
         }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .balance-section {
             grid-template-columns: 1fr;
@@ -350,12 +348,10 @@
         }
 
         function alterarConta(event) {
-            // Corrigido: event como parâmetro
             if (event) {
                 event.preventDefault();
             }
 
-            // Verifica se o usuário está logado
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
                 alert('Você precisa estar logado para alterar sua conta.');
@@ -363,20 +359,16 @@
                 return;
             }
 
-            // Pega o ID do usuário logado
             const usuario = JSON.parse(usuarioLogado);
 
-            // Captura os valores dos inputs
             const novoNome = document.getElementById('nome').value;
             const novaSenha = document.getElementById('novaSenha').value;
 
-            // Validação básica
             if (!novoNome || !novaSenha) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
 
-            // Validações adicionais
             if (novoNome.length < 3) {
                 alert('O nome deve ter pelo menos 3 caracteres.');
                 return;
@@ -387,21 +379,18 @@
                 return;
             }
 
-            // Desabilita o botão durante o envio
             const botao = document.querySelector('button[onclick*="alterarConta"]');
             if (botao) {
                 botao.disabled = true;
                 botao.textContent = 'Alterando...';
             }
 
-            // Cria o objeto com os dados atualizados
             const dadosAtualizados = {
                 id: usuario.id,
                 nome: novoNome,
                 senha: novaSenha
             };
 
-            // Faz a requisição POST para a API
             fetch('https://localhost:44344/api/App/Alterar', {
                 method: 'POST',
                 headers: {
@@ -420,7 +409,6 @@
                 })
                 .then(data => {
                     if (data.sucesso) {
-                        // Atualiza o localStorage com o novo nome
                         const usuarioAtualizado = {
                             id: usuario.id,
                             nome: novoNome
@@ -429,17 +417,14 @@
 
                         alert(data.mensagem || 'Conta alterada com sucesso!');
 
-                        // Limpa os campos
                         document.getElementById('nome').value = '';
                         document.getElementById('novaSenha').value = '';
 
-                        // Atualiza o nome exibido na página se existir
                         const elementoNome = document.querySelector('.user-name, #user-name');
                         if (elementoNome) {
                             elementoNome.textContent = novoNome;
                         }
 
-                        // Opcional: redirecionar após 2 segundos
                         setTimeout(() => {
                             window.location.href = 'extrato.html';
                         }, 2000);
@@ -450,7 +435,6 @@
                 .catch(error => {
                     console.error('Erro ao alterar conta:', error);
 
-                    // Mensagens de erro específicas
                     if (error.message.includes('nome já está em uso')) {
                         alert('Este nome já está sendo usado por outro usuário.');
                     } else {
@@ -458,7 +442,6 @@
                     }
                 })
                 .finally(() => {
-                    // Reabilita o botão
                     if (botao) {
                         botao.disabled = false;
                         botao.textContent = 'Alterar';
@@ -467,7 +450,6 @@
         }
 
         function deletarConta() {
-            // Verifica se o usuário está logado
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
                 alert('Você precisa estar logado para excluir sua conta.');
@@ -475,10 +457,8 @@
                 return;
             }
 
-            // Pega o ID do usuário logado
             const usuario = JSON.parse(usuarioLogado);
 
-            // Modal de confirmação customizado (mais elegante)
             const modalHtml = `
                     <div id="modalExclusao" style="
                         position: fixed;
@@ -527,7 +507,6 @@
                     </div>
                 `;
 
-            // Adiciona o modal ao body
             document.body.insertAdjacentHTML('beforeend', modalHtml);
         }
 
@@ -542,10 +521,8 @@
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             const usuario = JSON.parse(usuarioLogado);
 
-            // Remove o modal
             cancelarExclusao();
 
-            // Mostra loading
             const loadingHtml = `
                     <div id="loadingExclusao" style="
                         position: fixed;
@@ -563,12 +540,10 @@
                 `;
             document.body.insertAdjacentHTML('beforeend', loadingHtml);
 
-            // Objeto com o ID do usuário
             const dadosExclusao = {
                 id: usuario.id
             };
 
-            // Faz a requisição DELETE para a API
             fetch('https://localhost:44344/api/App/DeletarUsuario', {
                 method: 'DELETE',
                 headers: {
@@ -587,27 +562,22 @@
                 })
                 .then(data => {
                     if (data.sucesso) {
-                        // Remove o loading
                         const loading = document.getElementById('loadingExclusao');
                         if (loading) loading.remove();
 
-                        // Remove o usuário do localStorage
                         localStorage.removeItem('usuarioLogado');
 
-                        // Limpa outros dados do localStorage se existirem
                         localStorage.removeItem('token');
                         sessionStorage.clear();
 
                         alert('Sua conta foi excluída com sucesso. Sentiremos sua falta!');
 
-                        // Redireciona para a página inicial
                         window.location.href = 'index.html';
                     } else {
                         throw new Error(data.mensagem || 'Erro ao excluir conta.');
                     }
                 })
                 .catch(error => {
-                    // Remove o loading
                     const loading = document.getElementById('loadingExclusao');
                     if (loading) loading.remove();
 
@@ -616,13 +586,11 @@
                 });
         }
 
-        // Adiciona validação em tempo real para o formulário de alteração
         document.addEventListener('DOMContentLoaded', function () {
             const nomeInput = document.getElementById('nome');
             const senhaInput = document.getElementById('novaSenha');
 
             if (nomeInput) {
-                // Mostra o nome atual como placeholder
                 const usuarioLogado = localStorage.getItem('usuarioLogado');
                 if (usuarioLogado) {
                     const usuario = JSON.parse(usuarioLogado);
