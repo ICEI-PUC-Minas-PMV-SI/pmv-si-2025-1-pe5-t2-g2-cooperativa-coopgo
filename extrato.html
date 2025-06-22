@@ -262,6 +262,12 @@
                     padding: 10px 5px;
                 }
         }
+
+        .saldo-atual {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 25px;
+        }
     </style>
 </head>
 <body>
@@ -290,16 +296,15 @@
             <div class="account-title">Sua Conta</div>
 
             <div class="balance-section">
-                <div class="balance-label">Saldo em conta:</div>
-                <div class="balance-item">
-                    <button class="balance-button saque-btn">Saque</button>
+                <div class="balance-info">
+                    <span class="balance-label">Saldo em conta:</span>
+                    <span class="saldo-atual">R$ 0,00</span>
                 </div>
-                <div class="balance-item">
-                    <button class="balance-button deposito-btn">Depósito</button>
-                </div>
+
+                <button class="balance-button saque-btn">Saque</button>
+                <button class="balance-button deposito-btn">Depósito</button>
             </div>
         </div>
-
         <div class="extract-section">
             <div class="extract-title">Extrato</div>
 
@@ -313,7 +318,6 @@
                     </tr>
                 </thead>
                 <tbody id="extrato-list">
-                    <!-- Dados serão inseridos via JavaScript -->
                 </tbody>
             </table>
         </div>
@@ -385,23 +389,14 @@
         // Função para calcular e exibir o saldo
         function atualizarSaldo(transacoes) {
             const saldo = transacoes.reduce((total, transacao) => total + transacao.valor, 0);
-
-            // Adicionar o saldo na interface (você pode adicionar um elemento HTML para mostrar isso)
-            const balanceSection = document.querySelector('.balance-section');
             const saldoElement = document.querySelector('.saldo-atual');
 
-            if (!saldoElement) {
-                const saldoDiv = document.createElement('div');
-                saldoDiv.className = 'saldo-atual';
-                saldoDiv.style.cssText = 'font-size: 24px; font-weight: bold; margin: 10px 0; color: ' +
-                    (saldo >= 0 ? '#28a745' : '#dc3545');
-                saldoDiv.textContent = `R$ ${saldo.toFixed(2).replace('.', ',')}`;
-                balanceSection.insertBefore(saldoDiv, balanceSection.querySelector('.balance-item'));
-            } else {
+            if (saldoElement) {
                 saldoElement.textContent = `R$ ${saldo.toFixed(2).replace('.', ',')}`;
                 saldoElement.style.color = saldo >= 0 ? '#28a745' : '#dc3545';
             }
         }
+
 
         // Função para adicionar depósito
         async function adicionarDeposito(valor) {
