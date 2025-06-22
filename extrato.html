@@ -272,7 +272,7 @@
 
                 <div class="nav-links">
                     <a href="#">Extrato</a>
-                    <a href="cadastrodeusuario.html">Usuário<span></span></a>
+                    <a href="editar_conta.html">Usuário<span></span></a>
                 </div>
 
                 <div class="user-section">
@@ -328,7 +328,7 @@
         async function carregarExtrato() {
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
                 return;
             }
 
@@ -365,11 +365,11 @@
                         `-R$${Math.abs(item.valor).toFixed(2).replace('.', ',')}`;
 
                     row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
-                    <td>${item.tipo}</td>
-                    <td class="${valorClass}">${valorFormatado}</td>
-                `;
+                        <td>${index + 1}</td>
+                        <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
+                        <td>${item.tipo}</td>
+                        <td class="${valorClass}">${valorFormatado}</td>
+                    `;
                     tbody.appendChild(row);
                 });
 
@@ -407,7 +407,7 @@
         async function adicionarDeposito(valor) {
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
                 return;
             }
 
@@ -453,7 +453,7 @@
         async function adicionarSaque(valor) {
             const usuarioLogado = localStorage.getItem('usuarioLogado');
             if (!usuarioLogado) {
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
                 return;
             }
 
@@ -514,7 +514,7 @@
         function logout() {
             if (confirm('Deseja realmente sair?')) {
                 localStorage.removeItem('usuarioLogado');
-                window.location.href = 'login.html';
+                window.location.href = 'index.html';
             }
         }
 

@@ -333,13 +333,7 @@
                     <img src="img/coopgologo.jpg"></img>
                 </div>
                 <div class="description">
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum Lorem ipsum Lorem ipsum
-                    Lorem ipsum
+                    A COOPGO é uma cooperativa bancária comprometida com o fortalecimento financeiro de seus associados por meio de soluções justas, acessíveis e colaborativas. Fundada sobre os princípios do cooperativismo, a COOPGO promove o desenvolvimento econômico sustentável, incentivando a participação ativa dos cooperados na construção de um sistema financeiro mais humano, transparente e solidário. Com foco no atendimento personalizado e na valorização da comunidade, a COOPGO oferece produtos e serviços financeiros que visam o bem-estar coletivo e a geração de oportunidades para todos.
                 </div>
             </div>
 
@@ -513,20 +507,20 @@
             const alerta = document.createElement('div');
             alerta.className = 'alerta-erro';
             alerta.innerHTML = `
-            <span>${mensagem}</span>
-            <button onclick="this.parentElement.remove()">×</button>
-        `;
+                <span>${mensagem}</span>
+                <button onclick="this.parentElement.remove()">×</button>
+            `;
             alerta.style.cssText = `
-            background: #f8d7da;
-            color: #721c24;
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideIn 0.3s ease;
-        `;
+                background: #f8d7da;
+                color: #721c24;
+                padding: 12px 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                animation: slideIn 0.3s ease;
+            `;
 
             const form = document.getElementById('login-form');
             form.insertBefore(alerta, form.firstChild);
@@ -545,13 +539,13 @@
             alerta.className = 'alerta-sucesso';
             alerta.textContent = mensagem;
             alerta.style.cssText = `
-            background: #d4edda;
-            color: #155724;
-            padding: 12px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            animation: slideIn 0.3s ease;
-        `;
+                background: #d4edda;
+                color: #155724;
+                padding: 12px 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                animation: slideIn 0.3s ease;
+            `;
 
             const form = document.getElementById('login-form');
             form.insertBefore(alerta, form.firstChild);
@@ -674,33 +668,33 @@
 
         const style = document.createElement('style');
         style.textContent = `
-        .spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #f3f3f3;
-            border-top: 2px solid #333;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
+            .spinner {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border: 2px solid #f3f3f3;
+                border-top: 2px solid #333;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin-right: 8px;
+                vertical-align: middle;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
-        }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 `;
         document.head.appendChild(style);
     </script>
