@@ -283,7 +283,7 @@
 
                 <div class="user-section">
                     <div class="cotacao-dolar">
-                        Cotação Dólar: R$<span id="cotacao-dolar">5,40</span>
+                        Cotação Dólar: R$<span id="cotacao-dolar">...</span>
                     </div>
                     <button class="logout-btn" onclick="logout()">Logout</button>
                 </div>
@@ -369,11 +369,11 @@
                         `-R$${Math.abs(item.valor).toFixed(2).replace('.', ',')}`;
 
                     row.innerHTML = `
-                            <td>${index + 1}</td>
-                            <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
-                            <td>${item.tipo}</td>
-                            <td class="${valorClass}">${valorFormatado}</td>
-                        `;
+                                <td>${index + 1}</td>
+                                <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
+                                <td>${item.tipo}</td>
+                                <td class="${valorClass}">${valorFormatado}</td>
+                            `;
                     tbody.appendChild(row);
                 });
 
@@ -513,10 +513,24 @@
             }
         }
 
+        async function atualizarCotacaoDolar() {
+            try {
+                const resposta = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+                const dados = await resposta.json();
+                const cotacao = parseFloat(dados.USDBRL.bid).toFixed(2);
+                document.getElementById("cotacao-dolar").textContent = cotacao;
+            } catch (erro) {
+                console.error("Erro ao buscar a cotação do dólar:", erro);
+                document.getElementById("cotacao-dolar").textContent = "Erro";
+            }
+        }
+
+        // Atualiza ao carregar a página
+        atualizarCotacaoDolar();
         // Inicialização da página
         document.addEventListener('DOMContentLoaded', function () {
             carregarExtrato();
-            buscarCotacaoDolar();
+            atualizarCotacaoDolar();
 
             // Atualizar cotação do dólar a cada 30 segundos
             setInterval(buscarCotacaoDolar, 30000);
