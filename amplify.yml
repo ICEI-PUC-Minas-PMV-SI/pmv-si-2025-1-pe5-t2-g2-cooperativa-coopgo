@@ -1,0 +1,14 @@
+version: 1.0
+applications:
+  - backend:
+      phases:
+        build:
+          commands:
+            - echo "Compilando aplicação .NET..."
+            - dotnet publish -c Release -o ./publish
+      artifacts:
+        baseDirectory: publish
+        files:
+          - '**/*'
+      cache:
+        paths: []

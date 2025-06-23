@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QP9yDLwdOyhSfBScykJr3v31Dep2uugmSNq4xX9JUcqVNq93g4U7UH/03Y6Op5Ee9a5UX3GWpuTFJyDE2zf8Rw==",
+  "dgSpecHash": "RA5IN5GrDTsfFuBXeUf60jSsQB3sQoOFgApUPZSTxLnShKT1YMfiZAms+/dEi7sdSjCesoQe4q25bG7kuHsCDQ==",
   "success": true,
   "projectFilePath": "C:\\Git\\Repos\\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\\COOPGO.csproj",
   "expectedPackageFiles": [
@@ -36,6 +36,7 @@
     "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.5.0\\microsoft.identitymodel.protocols.openidconnect.7.5.0.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.0\\microsoft.identitymodel.tokens.7.5.0.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Gabriel\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\mysqlconnector\\2.0.0\\mysqlconnector.2.0.0.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Gabriel\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.0\\pomelo.entityframeworkcore.mysql.6.0.0.nupkg.sha512",
