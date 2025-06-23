@@ -1,6 +1,6 @@
 # Infraestrutura de redes - Cooperativa COOPGO
 
-![Descrição da imagem](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/Captura%20de%20tela%202025-06-10%20134146.png)
+![Descrição da imagem](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/logocoopgo.png)
 
 
 `CURSO: Sistemas de Informação`
