@@ -52,6 +52,11 @@ Nossa aplicação não possui registro e monitoramento, como consequência as vi
 Esta categoria trata da proteção inadequada de dados sensíveis em repouso ou em trânsito, como senhas, tokens, dados bancários e informações pessoais.
  
 Nossa aplicação não utiliza criptografia para proteger os dados sensíveis armazenados no banco de dados e nem adota HTTPS nas comunicações. Como consequência, esses dados podem ser interceptados ou acessados por terceiros mal-intencionados, comprometendo a confidencialidade e a integridade das informações.
+
+## DEPLOY DA APLICAÇÃO 
+
+
+![pkt](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/imagem.png)
  
 
 
