@@ -33,10 +33,23 @@ if (app.Environment.IsDevelopment())
 
 }
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:8080") // coloque a origem que está rodando seu front
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
 //app cors
 //app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("corsapp");
+app.UseCors("AllowAllOrigins");
 app.UseAuthorization();
 app.UseStaticFiles();
 
