@@ -47,6 +47,14 @@ Esta categoria visa auxiliar na detecção, escalonamento e resposta a violaçõ
 Nossa aplicação não possui registro e monitoramento, como consequência as violações não podem ser detectadas.
 
 
+**A02:2021 – Falhas criptográficas.**
+
+Esta categoria trata da proteção inadequada de dados sensíveis em repouso ou em trânsito, como senhas, tokens, dados bancários e informações pessoais.
+ 
+Nossa aplicação não utiliza criptografia para proteger os dados sensíveis armazenados no banco de dados e nem adota HTTPS nas comunicações. Como consequência, esses dados podem ser interceptados ou acessados por terceiros mal-intencionados, comprometendo a confidencialidade e a integridade das informações.
+ 
+
+
 
 
 
