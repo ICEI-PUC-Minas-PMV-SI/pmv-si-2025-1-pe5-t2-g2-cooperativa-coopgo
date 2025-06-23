@@ -1,11 +1,9 @@
-using COOPGO.Models;
+﻿using COOPGO.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -15,45 +13,40 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//services cors
-builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
-{
-    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-}));
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-
-}
-
+// ✅ Configuração CORS (antes do Build)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins", builder =>
+    options.AddPolicy("AllowFrontend", builder =>
     {
         builder
-            .WithOrigins("http://localhost:8080") // coloque a origem que est� rodando seu front
+            .WithOrigins("http://localhost:8080") // substitua com outras origens se necessário
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
     });
 });
 
-//app cors
-//app.UseHttpsRedirection();
+var app = builder.Build();
+
+// Middleware
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+// app.UseHttpsRedirection(); // desativado por enquanto, se usar só http
+
 app.UseRouting();
-app.UseCors("corsapp");
-app.UseCors("AllowAllOrigins");
+
+app.UseCors("AllowFrontend"); // ✅ Aplica a política
+
 app.UseAuthorization();
 app.UseStaticFiles();
-
-//app.UseCors(prodCorsPolicy);
 
 app.MapControllers();
 
