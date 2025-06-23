@@ -82,8 +82,3 @@ C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\obj\Release\net6.0\COOPG
 C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\obj\Release\net6.0\COOPGO.genruntimeconfig.cache
 C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\obj\Release\net6.0\ref\COOPGO.dll
 C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\COOPGO.staticwebassets.runtime.json
-C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\publish\web.config
-C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\publish\appsettings.Development.json
-C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\publish\appsettings.json
-C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\publish\COOPGO.deps.json
-C:\Git\Repos\pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo\bin\Release\net6.0\publish\COOPGO.runtimeconfig.json

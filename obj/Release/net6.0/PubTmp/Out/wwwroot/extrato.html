@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extrato</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .navbar {
+            background-color: #1a1a1a !important;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+            .navbar .container-fluid {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        .logo {
+            font-family: 'Monoton', cursive;
+            color: #9acd32 !important;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            max-height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            color: white;
+        }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+            }
+
+                .nav-links a:hover {
+                    color: #9acd32;
+                }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+            .user-section span {
+                color: #9acd32;
+            }
+
+        .cotacao-dolar {
+            color: white;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .logout-btn:hover {
+                background-color: #c82333;
+            }
+
+        /* Main content */
+        .main-container {
+            flex: 1;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .account-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .account-title {
+            background: #f8f9fa;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .balance-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .balance-label {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .balance-item {
+            text-align: center;
+        }
+
+        .balance-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .saque-btn {
+            background-color: #28a745;
+        }
+
+        .deposito-btn {
+            background-color: #28a745;
+        }
+
+            .saque-btn:hover, .deposito-btn:hover {
+                opacity: 0.9;
+            }
+
+        /* Extract section */
+        .extract-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .extract-title {
+            text-align: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .extract-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+            .extract-table th {
+                background-color: #f8f9fa;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                border: 1px solid #ddd;
+            }
+
+            .extract-table td {
+                padding: 15px;
+                text-align: center;
+                border: 1px solid #ddd;
+            }
+
+            .extract-table tbody tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+        .valor-positivo {
+            color: #000;
+        }
+
+        .valor-negativo {
+            color: #dc3545;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: white;
+        }
+
+            footer a {
+                color: #9acd32;
+                text-decoration: none;
+                margin: 0 15px;
+            }
+
+                footer a:hover {
+                    color: white;
+                }
+
+            footer p {
+                color: #ccc;
+                margin: 10px 0 0 0;
+                font-size: 14px;
+            }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .balance-section {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .main-container {
+                padding: 15px;
+            }
+
+            .extract-table {
+                font-size: 14px;
+            }
+
+                .extract-table th,
+                .extract-table td {
+                    padding: 10px 5px;
+                }
+        }
+
+        .saldo-atual {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <img class="logo" src="" href="#"></img>
+
+                <div class="nav-links">
+                    <a href="#">Extrato</a>
+                    <a href="editar_conta.html">Usuário<span></span></a>
+                </div>
+
+                <div class="user-section">
+                    <div class="cotacao-dolar">
+                        Cotação Dólar: R$<span id="cotacao-dolar">...</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="account-section">
+            <div class="account-title">Sua Conta</div>
+
+            <div class="balance-section">
+                <div class="balance-info">
+                    <span class="balance-label">Saldo em conta:</span>
+                    <span class="saldo-atual">R$ 0,00</span>
+                </div>
+
+                <button class="balance-button saque-btn">Saque</button>
+                <button class="balance-button deposito-btn">Depósito</button>
+            </div>
+        </div>
+        <div class="extract-section">
+            <div class="extract-title">Extrato</div>
+
+            <table class="extract-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Transação</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="extrato-list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>COOPGO © 2025 Copyright Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // Função para carregar dados do extrato do servidor
+        async function carregarExtrato() {
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
+            if (!usuarioLogado) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const usuario = JSON.parse(usuarioLogado);
+
+            try {
+                const response = await fetch(`https://localhost:8080/api/App/ListarExtrato/${usuario.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const transacoes = await response.json();
+
+                const tbody = document.getElementById('extrato-list');
+                tbody.innerHTML = '';
+
+                if (transacoes.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Nenhuma transação encontrada</td></tr>';
+                    return;
+                }
+
+                transacoes.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    const valorClass = item.valor >= 0 ? 'valor-positivo' : 'valor-negativo';
+                    const valorFormatado = item.valor >= 0 ?
+                        `R$${item.valor.toFixed(2).replace('.', ',')}` :
+                        `-R$${Math.abs(item.valor).toFixed(2).replace('.', ',')}`;
+
+                    row.innerHTML = `
+                                <td>${index + 1}</td>
+                                <td>${new Date(item.data).toLocaleDateString('pt-BR')}</td>
+                                <td>${item.tipo}</td>
+                                <td class="${valorClass}">${valorFormatado}</td>
+                            `;
+                    tbody.appendChild(row);
+                });
+
+                // Atualizar saldo
+                atualizarSaldo(transacoes);
+
+            } catch (error) {
+                console.error('Erro ao carregar extrato:', error);
+                alert('Erro ao carregar extrato.');
+            }
+        }
+
+        // Função para calcular e exibir o saldo
+        function atualizarSaldo(transacoes) {
+            const saldo = transacoes.reduce((total, transacao) => total + transacao.valor, 0);
+            const saldoElement = document.querySelector('.saldo-atual');
+
+            if (saldoElement) {
+                saldoElement.textContent = `R$ ${saldo.toFixed(2).replace('.', ',')}`;
+                saldoElement.style.color = saldo >= 0 ? '#28a745' : '#dc3545';
+            }
+        }
+
+
+        // Função para adicionar depósito
+        async function adicionarDeposito(valor) {
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
+            if (!usuarioLogado) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const usuario = JSON.parse(usuarioLogado);
+
+            const transacao = {
+                usuarioId: usuario.id,
+                tipo: 'Depósito',
+                valor: parseFloat(valor),
+                data: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('https://localhost:8080/api/App/AdicionarTransacao', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(transacao)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.sucesso) {
+                    alert('Depósito realizado com sucesso!');
+                    carregarExtrato(); // Recarrega o extrato
+                } else {
+                    alert(result.mensagem || 'Erro ao realizar depósito.');
+                }
+
+            } catch (error) {
+                console.error('Erro ao realizar depósito:', error);
+                alert('Erro ao realizar depósito.');
+            }
+        }
+
+        // Função para adicionar saque
+        async function adicionarSaque(valor) {
+            const usuarioLogado = localStorage.getItem('usuarioLogado');
+            if (!usuarioLogado) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const usuario = JSON.parse(usuarioLogado);
+
+            const transacao = {
+                usuarioId: usuario.id,
+                tipo: 'Saque',
+                valor: -parseFloat(valor), // Valor negativo para saque
+                data: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('https://localhost:8080/api/App/AdicionarTransacao', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(transacao)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.sucesso) {
+                    alert('Saque realizado com sucesso!');
+                    carregarExtrato(); // Recarrega o extrato
+                } else {
+                    alert(result.mensagem || 'Erro ao realizar saque.');
+                }
+
+            } catch (error) {
+                console.error('Erro ao realizar saque:', error);
+                alert('Erro ao realizar saque.');
+            }
+        }
+
+        // Event listeners atualizados
+        document.querySelector('.saque-btn').addEventListener('click', function () {
+            const valor = prompt('Digite o valor do saque:');
+            if (valor && !isNaN(valor) && parseFloat(valor) > 0) {
+                adicionarSaque(valor);
+            }
+        });
+
+        document.querySelector('.deposito-btn').addEventListener('click', function () {
+            const valor = prompt('Digite o valor do depósito:');
+            if (valor && !isNaN(valor) && parseFloat(valor) > 0) {
+                adicionarDeposito(valor);
+            }
+        });
+
+        // Função de logout atualizada
+        function logout() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('usuarioLogado');
+                window.location.href = 'index.html';
+            }
+        }
+
+        async function atualizarCotacaoDolar() {
+            try {
+                const resposta = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+                const dados = await resposta.json();
+                const cotacao = parseFloat(dados.USDBRL.bid).toFixed(2);
+                document.getElementById("cotacao-dolar").textContent = cotacao;
+            } catch (erro) {
+                console.error("Erro ao buscar a cotação do dólar:", erro);
+                document.getElementById("cotacao-dolar").textContent = "Erro";
+            }
+        }
+
+        // Atualiza ao carregar a página
+        atualizarCotacaoDolar();
+        // Inicialização da página
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarExtrato();
+            atualizarCotacaoDolar();
+
+            // Atualizar cotação do dólar a cada 30 segundos
+            setInterval(buscarCotacaoDolar, 30000);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

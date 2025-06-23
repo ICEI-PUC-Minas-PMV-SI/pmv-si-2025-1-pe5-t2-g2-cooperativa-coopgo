@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+
+// Add services to the container.
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -13,40 +15,31 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-// Swagger/OpenAPI
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// ✅ Configuração CORS (antes do Build)
-builder.Services.AddCors(options =>
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    options.AddPolicy("AllowFrontend", builder =>
-    {
-        builder
-            .WithOrigins("http://localhost:8080") // substitua com outras origens se necessário
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
-});
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
-// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
 
-// app.UseHttpsRedirection(); // desativado por enquanto, se usar só http
-
+//app cors
+app.UseHttpsRedirection();
 app.UseRouting();
-
-app.UseCors("AllowFrontend"); // ✅ Aplica a política
-
+app.UseCors("corsapp");
 app.UseAuthorization();
-app.UseStaticFiles();
+
+//app.UseCors(prodCorsPolicy);
 
 app.MapControllers();
 
