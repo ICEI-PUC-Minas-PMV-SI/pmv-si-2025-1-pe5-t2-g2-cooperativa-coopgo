@@ -18,6 +18,8 @@ Outra meta é assegurar a escalabilidade com uma estrutura modular que permita c
 
 [Veja nossa Cartilha de Segurança da Informação](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/Cartilha.pdf)
 
+[Veja nosso Artigo Acadêmico](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2025-1-pe5-t2-g2-cooperativa-coopgo/blob/main/docs/Artigo%20academico%20-%20Cooperativa%20COOPGO.pdf)
+
 ## Integrantes
 
 * Vitoria Lorrayne dos Santos Soares
